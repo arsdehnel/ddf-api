@@ -1,0 +1,23 @@
+<h2>Show form</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @form.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @form.description %>
+  </li>
+
+  <li>
+    <strong>Code:</strong>
+    <%= @form.code %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: app_form_path(@conn, :edit, @app_id, @form) %>
+<%= link "Back", to: app_form_path(@conn, :index, @app_id) %>

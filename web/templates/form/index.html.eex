@@ -1,0 +1,29 @@
+<h2>Listing forms</h2>
+<%= link "Back to Apps", to: app_path(@conn, :index) %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for form <- @forms do %>
+    <tr>
+      <td><%= form.name %></td>
+      <td><%= form.description %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: app_form_path(@conn, :show, @app_id, form), class: "btn btn-default btn-xs" %>
+        <%= link "Fields", to: app_form_field_path(@conn, :index, @app_id, form), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: app_form_path(@conn, :edit, @app_id, form), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: app_form_path(@conn, :delete, @app_id, form), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New form", to: app_form_path(@conn, :new, @app_id) %>

@@ -1,0 +1,30 @@
+<h2>Listing fields</h2>
+<%= link "Back to Forms", to: app_form_path(@conn, :index, @app_id) %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Label</th>
+      <th>Type</th>
+      <th>Sort order</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for field <- @fields do %>
+    <tr>
+      <td><%= field.label %></td>
+      <td><%= field.type %></td>
+      <td><%= field.sort_order %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: app_form_field_path(@conn, :show, @app_id, @form_id, field), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: app_form_field_path(@conn, :edit, @app_id, @form_id, field), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: app_form_field_path(@conn, :delete, @app_id, @form_id, field), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New field", to: app_form_field_path(@conn, :new, @app_id, @form_id) %>

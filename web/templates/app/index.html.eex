@@ -1,0 +1,29 @@
+<h2>Listing apps</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for app <- @apps do %>
+    <tr>
+      <td><%= app.name %></td>
+      <td><%= app.description %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: app_path(@conn, :show, app), class: "btn btn-default btn-xs" %>
+        <%= link "Forms", to: app_form_path(@conn, :index, app), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: app_path(@conn, :edit, app), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: app_path(@conn, :delete, app), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New app", to: app_path(@conn, :new) %>

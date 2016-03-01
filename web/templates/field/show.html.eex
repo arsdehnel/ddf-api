@@ -1,0 +1,23 @@
+<h2>Show field</h2>
+
+<ul>
+
+  <li>
+    <strong>Label:</strong>
+    <%= @field.label %>
+  </li>
+
+  <li>
+    <strong>Type:</strong>
+    <%= @field.type %>
+  </li>
+
+  <li>
+    <strong>Sort order:</strong>
+    <%= @field.sort_order %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: app_form_field_path(@conn, :edit, @app_id, @form_id, @field) %>
+<%= link "Back", to: app_form_field_path(@conn, :index, @app_id, @form_id) %>
